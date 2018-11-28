@@ -77,12 +77,12 @@ function edit_startup() {
   echo ":::"
   echo "::: Editing Files :::"
 
-  echo 'chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1' | sudo tee --append /home/pi/startup.sh > /dev/null
-  chmod +x /home/pi/startup.sh
+  echo 'chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1' | sudo tee --append startup.sh > /dev/null
+  chmod +x startup.sh
 
   $SUDO cp /etc/rc.local /home/pi/rc.local
   $SUDO sed -i.bak "s+exit 0+#exit 0+g" /home/pi/rc.local
-  echo 'sudo xinit ./home/pi/startup.sh &' | sudo tee --append /home/pi/rc.local > /dev/null
+  echo 'sudo xinit ./home/pi/pi-kiosk/startup.sh &' | sudo tee --append /home/pi/rc.local > /dev/null
   echo 'exit 0 ' | sudo tee --append /home/pi/rc.local > /dev/null
   $SUDO cp /home/pi/rc.local /etc/rc.local
   $SUDO rm /home/pi/rc.local.bak
