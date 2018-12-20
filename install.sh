@@ -73,7 +73,7 @@ function install_the_things() {
 }
 
 function edit_startup() {
-  # editing startup files to auto start 
+  # editing startup files to auto start
   echo ":::"
   echo "::: Editing Files :::"
 
