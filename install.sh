@@ -68,7 +68,7 @@ function install_the_things() {
   # installing all the programs to enable kiosk mode
   echo "::::::::::::"
   echo "::: Installing programs :::"
-  $SUDO apt install -y xinit unclutter chromium-browser matchbox-window-manager
+  $SUDO apt install -y xinit xserver-xorg x11-xserver-utils unclutter chromium-browser matchbox-window-manager
   echo "::: DONE installing all the things!"
 }
 
@@ -80,17 +80,17 @@ function edit_startup() {
   echo 'chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1' | sudo tee --append startup.sh > /dev/null
   chmod +x startup.sh
 
-  $SUDO cp /etc/rc.local /home/pi/rc.local
-  $SUDO sed -i.bak "s+exit 0+#exit 0+g" /home/pi/rc.local
-  echo 'sudo xinit ./home/pi/pi-kiosk/startup.sh &' | sudo tee --append /home/pi/rc.local > /dev/null
-  echo 'exit 0 ' | sudo tee --append /home/pi/rc.local > /dev/null
-  $SUDO cp /home/pi/rc.local /etc/rc.local
+  $SUDO cp /etc/rc.local rc.local
+  $SUDO sed -i.bak "s+exit 0+#exit 0+g" rc.local
+  echo 'sudo xinit ./home/pi/pi-kiosk/startup.sh &' | sudo tee --append rc.local > /dev/null
+  echo 'exit 0 ' | sudo tee --append rc.local > /dev/null
+  $SUDO cp rc.local /etc/rc.local
   $SUDO rm /home/pi/rc.local.bak
   $SUDO rm /home/pi/rc.local
 
-  $SUDO touch /home/pi/.xinitrc
+  $SUDO touch ~/.xinitrc
   echo '#!/bin/bash
-matchbox-window-manager' | sudo tee --append /home/pi/.xinitrc > /dev/null
+matchbox-window-manager' | sudo tee --append ~/.xinitrc > /dev/null
 
   $SUDO echo $var2 > /etc/hostname # changes the hostname of the machine
 
