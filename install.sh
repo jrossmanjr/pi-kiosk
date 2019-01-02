@@ -80,13 +80,11 @@ function edit_startup() {
   echo 'chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1' | sudo tee --append startup.sh > /dev/null
   chmod +x startup.sh
 
-  $SUDO cp /etc/rc.local rc.local
-  $SUDO sed -i.bak "s+exit 0+#exit 0+g" rc.local
-  echo 'sudo xinit ./home/pi/pi-kiosk/startup.sh &' | sudo tee --append rc.local > /dev/null
-  echo 'exit 0 ' | sudo tee --append rc.local > /dev/null
-  $SUDO cp rc.local /etc/rc.local
-  $SUDO rm /home/pi/rc.local.bak
-  $SUDO rm /home/pi/rc.local
+
+  $SUDO sed -i.bak "s+exit 0+#exit 0+g" /etc/rc.local
+  echo 'sudo xinit .~/pi-kiosk/startup.sh &' | sudo tee --append /etc/rc.local > /dev/null
+  echo 'exit 0 ' | sudo tee --append /etc/rc.local > /dev/null
+
 
   $SUDO touch ~/.xinitrc
   echo '#!/bin/bash
