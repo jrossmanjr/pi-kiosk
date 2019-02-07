@@ -70,7 +70,7 @@ function install_the_things() {
   echo "::::::::::::"
   echo "::: Installing programs :::"
   $SUDO apt install -y xinit xserver-xorg x11-xserver-utils unclutter chromium-browser matchbox-window-manager xdotool
-  echo "::: DONE installing all the things!"
+  echo "::: DONE installing all the things! :::"
 }
 
 function edit_startup() {
