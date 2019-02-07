@@ -78,8 +78,8 @@ function edit_startup() {
   echo ":::"
   echo "::: Editing Files :::"
   echo "chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1
-/home/pi/xauth_root.sh
-/home/pi/autorefresh-chromium.sh" | sudo tee --append startup.sh > /dev/null
+/home/pi/pi-kiosk/xauth_root.sh
+/home/pi/pi-kiosk/autorefresh-chromium.sh" | sudo tee --append startup.sh > /dev/null
   
   # make the startup executeable
   chmod +x startup.sh
