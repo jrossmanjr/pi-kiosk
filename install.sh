@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Kiosk mode Install Script
-# data on how to do this was pulled mainly from [[ https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/ ]]
+# data on how to do this was pulled mainly from < https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/ >
+# data on how to refresh the screen - < https://www.raspberrypi.org/forums/viewtopic.php?t=178206#p1300301 >
 
 # Run this script as root or under sudo
 screen_size=$(stty size 2>/dev/null || echo 24 80)
@@ -76,7 +77,9 @@ function edit_startup() {
   # editing startup files to auto start
   echo ":::"
   echo "::: Editing Files :::"
-  echo 'chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1' | sudo tee --append startup.sh > /dev/null
+  echo "chromium-browser  --no-sandbox --noerrdialogs --disable-infobars --incognito --kiosk $var1
+/home/pi/xauth_root.sh
+/home/pi/autorefresh-chromium.sh" | sudo tee --append startup.sh > /dev/null
   
   # make the startup executeable
   chmod +x startup.sh
@@ -94,6 +97,11 @@ matchbox-window-manager' | sudo tee --append ~/.xinitrc > /dev/null
   # change the hostname
   $SUDO echo $var2 > /etc/hostname # changes the hostname of the machine
 
+  # setup a xdotool to be allwed to run in root
+  sudo chmod 755 xauth_root.sh
+
+  # setup the auto refresh script
+  sudo chmod 755 autorefresh-chromium.sh
 
   echo "::: DONE :::"
   echo "::: PLEASE RESTART :::"
