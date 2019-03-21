@@ -1,8 +1,21 @@
 #!/usr/bin/env bash
 # Kiosk mode Install Script
-# data on how to do this was pulled mainly from < https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/ >
-# data on how to refresh the screen - < https://www.raspberrypi.org/forums/viewtopic.php?t=178206#p1300301 >
+#--------------------------------------------------------------------------------------------------------------------#
+# data on how to do this was pulled mainly from:
+# https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/
 
+# data on how to refresh the screen - https://www.raspberrypi.org/forums/viewtopic.php?t=178206#p1300301
+#--------------------------------------------------------------------------------------------------------------------#
+# MIT License 
+#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+#documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+#the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+#and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+#THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS 
+#OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+#OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#--------------------------------------------------------------------------------------------------------------------#
 # Run this script as root or under sudo
 screen_size=$(stty size 2>/dev/null || echo 24 80)
 rows=$(echo $screen_size | awk '{print $1}')
