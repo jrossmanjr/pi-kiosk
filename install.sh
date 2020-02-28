@@ -72,7 +72,7 @@ function install_wifi() {
   # installing wifi drivers
   echo "::::::::::::"
   echo "::: Installing wifi drivers :::"
-  $SUDO wget http://www.fars-robotics.net/install-wifi -O /usr/bin/install-wifi
+  $SUDO wget http://downloads.fars-robotics.net/wifi-drivers/install-wifi -O /usr/bin/install-wifi
   $SUDO chmod +x /usr/bin/install-wifi
   $SUDO install-wifi
   echo "::: DONE! :::"
